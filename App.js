@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
       {/* Top view */}
       <View
         style={{
-          height: '60%',
+          height: '40%',
           width: '100%',
           backgroundColor: '#afa',
 
@@ -73,6 +73,69 @@ const App = () => {
               height: 70,
               width: 70,
             }}></View>
+        </View>
+      </View>
+
+      <View
+        style={{
+          height: '60%',
+          width: '100%',
+          backgroundColor: '#aaf',
+          // alignItems: 'center',
+        }}>
+        <View
+          style={{
+            height: '50%',
+            width: '50%',
+            backgroundColor: '#fff',
+            // paddingTop: 10,
+            paddingLeft: 10,
+          }}>
+          <View
+            style={{
+              height: 70,
+              width: 70,
+              backgroundColor: '#000',
+              marginTop: 10,
+              // marginBottom: 10,
+              // marginLeft: 10,
+              // marginRight: 10,
+            }}></View>
+
+          <View
+            style={{
+              height: 70,
+              width: 70,
+              backgroundColor: '#faf',
+              marginTop: 10,
+              // marginBottom: 10,
+              // marginLeft: 10,
+              // marginRight: 10,
+            }}></View>
+        </View>
+
+        <View
+          style={{
+            height: '50%',
+            width: '100%',
+            backgroundColor: '#a5a4',
+            // alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              fontSize: 26,
+              color: '#fff',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+              textAlign: 'center',
+              // textDecorationLine: 'underline',
+            }}
+            // numberOfLines={2}
+          >
+            hello world skfdlk {'\n'} jsflka jfkjdf akfhlkas djfljhas {'\n'}
+            dkflsaj
+          </Text>
         </View>
       </View>
     </View>
