@@ -11,18 +11,42 @@ export class BasicsTwo extends React.Component {
         }}>
         <View
           style={{
-            height: 100,
-            backgroundColor: '#fa3',
+            height: 200,
+            backgroundColor: '#fa32',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
           <TextInput
             style={{
-              backgroundColor: '#faf',
-              height: 50,
+              backgroundColor: '#fff',
+              // height: 100,
               width: '70%',
+              borderColor: 'red',
+              // borderLeftColor: 'red',
+              // borderRightColor: 'red',
+              // borderTopColor: 'red',
+              // borderBottomColor: 'red',
+              borderWidth: 1,
+              // borderLeftWidth: 2,
+              // borderRightWidth: 2,
+              // borderTopWidth: 2,
+              // borderBottomWidth: 2,
+              // borderRadius: 15,
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 10,
+              paddingLeft: 20,
+              maxHeight: 80,
+
+              color: 'blue',
             }}
             placeholder={'Enter Name'}
+            placeholderTextColor={'red'}
+            // underlineColorAndroid={'#000'}
+            multiline={true}
+            numberOfLines={4}
+            maxLength={4}
           />
         </View>
       </View>
