@@ -6,12 +6,15 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "clean_gradlew": "cd android && ./gradlew clean",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.66.0"
+    "react-native": "0.66.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.4",
+    "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
