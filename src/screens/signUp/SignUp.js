@@ -3,6 +3,14 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 export class SignUp extends React.Component {
+  sendData = (param, param2) => {
+    // console.warn('Button pressed');
+    console.warn('this is Param1    =   ' + param);
+    console.warn('this is Param2    =   ' + param2);
+  };
+
+  
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -56,7 +64,7 @@ export class SignUp extends React.Component {
           {/* bottom view */}
           <View
             style={{
-              //   backgroundColor: '#1af',
+              // backgroundColor: '#1af',
               height: '50%',
               padding: 15,
             }}>
@@ -97,6 +105,12 @@ export class SignUp extends React.Component {
                 alignItems: 'center',
               }}>
               <TouchableOpacity
+                // onPress={this.sendData}
+                onPress={() => {
+                  const param = 'Study';
+                  const param2 = 'Study2';
+                  this.sendData(param, param2);
+                }}
                 style={{
                   backgroundColor: '#000',
                   height: 50,
@@ -115,6 +129,32 @@ export class SignUp extends React.Component {
                 </Text>
               </TouchableOpacity>
             </View>
+          </View>
+
+          <View
+            style={{
+              // backgroundColor: '#faf',
+              height: '10%',
+              flexDirection: 'row',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                marginTop: 5,
+              }}>
+              Already have an account?{'  '}
+            </Text>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'red',
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  textDecorationLine: 'underline',
+                }}>
+                Sign In
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </KeyboardAwareScrollView>
