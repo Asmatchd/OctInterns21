@@ -9,8 +9,6 @@ export class SignUp extends React.Component {
     console.warn('this is Param2    =   ' + param2);
   };
 
-  
-
   render() {
     return (
       <KeyboardAwareScrollView
@@ -97,6 +95,18 @@ export class SignUp extends React.Component {
               placeholder={'Password'}
             />
 
+            <TouchableOpacity
+              onPress={() => {
+                console.warn('1');
+                console.log('2');
+              }}
+              style={{
+                marginTop: 10,
+                marginLeft: 30,
+              }}>
+              <Text>Forget Password.!</Text>
+            </TouchableOpacity>
+
             <View
               style={{
                 // backgroundColor: '#faf',
@@ -106,10 +116,14 @@ export class SignUp extends React.Component {
               }}>
               <TouchableOpacity
                 // onPress={this.sendData}
+                // onPress={() => {
+                //   const param = 'Study';
+                //   const param2 = 'Study2';
+                //   this.sendData(param, param2);
+                // }}
+
                 onPress={() => {
-                  const param = 'Study';
-                  const param2 = 'Study2';
-                  this.sendData(param, param2);
+                  this.props.navigation.navigate('Basics');
                 }}
                 style={{
                   backgroundColor: '#000',
@@ -144,7 +158,10 @@ export class SignUp extends React.Component {
               }}>
               Already have an account?{'  '}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('BasicsTwo');
+              }}>
               <Text
                 style={{
                   color: 'red',
