@@ -3,6 +3,12 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 export class SignUp extends React.Component {
+  state = {
+    name: '',
+    email: '',
+    password: '1234567890',
+  };
+
   sendData = (param, param2) => {
     // console.warn('Button pressed');
     console.warn('this is Param1    =   ' + param);
@@ -63,10 +69,11 @@ export class SignUp extends React.Component {
           <View
             style={{
               // backgroundColor: '#1af',
-              height: '50%',
+              height: 350,
               padding: 15,
             }}>
             <TextInput
+              onChangeText={txt => this.setState({name: txt})}
               style={{
                 // backgroundColor: '#aaf',
                 borderColor: 'red',
@@ -104,7 +111,7 @@ export class SignUp extends React.Component {
                 marginTop: 10,
                 marginLeft: 30,
               }}>
-              <Text>Forget Password.!</Text>
+              <Text>Forget Password.! </Text>
             </TouchableOpacity>
 
             <View
@@ -123,7 +130,8 @@ export class SignUp extends React.Component {
                 // }}
 
                 onPress={() => {
-                  this.props.navigation.navigate('Basics');
+                  // this.props.navigation.navigate('Dashboard');
+                  console.warn(this.state.name);
                 }}
                 style={{
                   backgroundColor: '#000',
@@ -148,7 +156,7 @@ export class SignUp extends React.Component {
           <View
             style={{
               // backgroundColor: '#faf',
-              height: '10%',
+              height: 100,
               flexDirection: 'row',
               justifyContent: 'center',
             }}>
