@@ -6,7 +6,7 @@ export class SignUp extends React.Component {
   state = {
     name: '',
     email: '',
-    password: '1234567890',
+    password: '',
   };
 
   sendData = (param, param2) => {
@@ -131,7 +131,8 @@ export class SignUp extends React.Component {
 
                 onPress={() => {
                   // this.props.navigation.navigate('Dashboard');
-                  console.warn(this.state.name);
+                  // console.warn('this is name  =    ' + this.state.name);
+                  console.warn();
                 }}
                 style={{
                   backgroundColor: '#000',
