@@ -5,6 +5,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export class Dashboard extends React.Component {
+  state = {
+    name: '',
+  };
+
+  componentDidMount = () => {
+    const navProps = this.props.route.params;
+    this.setState({name: navProps});
+  };
+
   render() {
     return (
       <View
@@ -38,7 +47,7 @@ export class Dashboard extends React.Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text>Dashboard</Text>
+            <Text>{this.state.name}</Text>
           </View>
           <TouchableOpacity
             style={{

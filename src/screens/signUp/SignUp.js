@@ -130,9 +130,8 @@ export class SignUp extends React.Component {
                 // }}
 
                 onPress={() => {
-                  // this.props.navigation.navigate('Dashboard');
-                  // console.warn('this is name  =    ' + this.state.name);
-                  console.warn();
+                  const navData = this.state.name;
+                  this.props.navigation.navigate('Dashboard', navData);
                 }}
                 style={{
                   backgroundColor: '#000',
