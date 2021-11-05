@@ -15,6 +15,46 @@ export class SignUp extends React.Component {
     console.warn('this is Param2    =   ' + param2);
   };
 
+  createUser = () => {
+    // if (
+    //   this.state.name === '' ||
+    //   this.state.email === '' ||
+    //   this.state.password === ''
+    // ) {
+    //   alert('All fields are required');
+    // } else {
+    //   alert('All ok');
+    // }
+    // ===========
+    // if (this.state.name === '') {
+    //   alert('Name is required');
+    // } else {
+    //   if (this.state.email === '') {
+    //     alert('Email is required');
+    //   } else {
+    //     if (this.state.password.length < 8) {
+    //       alert('Password must contain 8 characters');
+    //     } else {
+    //     }
+    //   }
+    // }
+    //===========
+
+    const navProps = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    this.state.name === ''
+      ? alert('Name is required')
+      : this.state.email === ''
+      ? alert('Email is required')
+      : this.state.password.length < 8
+      ? alert('Password must contain 8 characters')
+      : this.props.navigation.navigate('Dashboard', navProps);
+  };
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -83,6 +123,7 @@ export class SignUp extends React.Component {
             />
 
             <TextInput
+              onChangeText={txt => this.setState({email: txt})}
               style={{
                 // backgroundColor: '#aaf',
                 borderColor: 'red',
@@ -93,6 +134,7 @@ export class SignUp extends React.Component {
             />
 
             <TextInput
+              onChangeText={txt => this.setState({password: txt})}
               style={{
                 // backgroundColor: '#aaf',
                 borderColor: 'red',
@@ -129,10 +171,7 @@ export class SignUp extends React.Component {
                 //   this.sendData(param, param2);
                 // }}
 
-                onPress={() => {
-                  const navData = this.state.name;
-                  this.props.navigation.navigate('Dashboard', navData);
-                }}
+                onPress={() => this.createUser()}
                 style={{
                   backgroundColor: '#000',
                   height: 50,

@@ -7,11 +7,19 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 export class Dashboard extends React.Component {
   state = {
     name: '',
+    email: '',
+    password: '',
+    user: {},
   };
 
   componentDidMount = () => {
     const navProps = this.props.route.params;
-    this.setState({name: navProps});
+    this.setState({
+      user: navProps,
+      name: navProps.name,
+      email: navProps.email,
+      password: navProps.password,
+    });
   };
 
   render() {
@@ -47,7 +55,7 @@ export class Dashboard extends React.Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text>{this.state.name}</Text>
+            <Text>{this.state.user.name}</Text>
           </View>
           <TouchableOpacity
             style={{
