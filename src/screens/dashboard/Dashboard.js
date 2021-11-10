@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {NavHeader} from '../../components';
 
 export class Dashboard extends React.Component {
   state = {
@@ -21,9 +22,9 @@ export class Dashboard extends React.Component {
         email: navProps.email,
         password: navProps.password,
       });
-      console.warn('GIft ha');
+      // console.warn('GIft ha');
     } else {
-      console.warn('NO roti pani');
+      // console.warn('NO roti pani');
     }
   };
 
@@ -34,45 +35,17 @@ export class Dashboard extends React.Component {
           flex: 1,
           //   backgroundColor: '#faf',
         }}>
-        <View
-          style={{
-            height: 50,
-            // backgroundColor: '#aaf',
-            flexDirection: 'row',
-            borderBottomWidth: 0.5,
-            borderColor: 'red',
-          }}>
-          <TouchableOpacity
-            style={{
-              height: '100%',
-              width: '15%',
-              // backgroundColor: '#faf',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Ionicons name={'ios-list'} size={25} color={'red'} />
-          </TouchableOpacity>
-          <View
-            style={{
-              height: '100%',
-              width: '70%',
-              // backgroundColor: '#a3a',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text>{this.state.user.name}</Text>
-          </View>
-          <TouchableOpacity
-            style={{
-              height: '100%',
-              width: '15%',
-              // backgroundColor: '#faf',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <MaterialIcons name={'support-agent'} size={25} color={'red'} />
-          </TouchableOpacity>
-        </View>
+        <NavHeader
+          leftIc={'ios-list'}
+          title={'Dashboard'}
+          rightIc={'ios-arrow-forward'}
+          leftPressed={() => {
+            console.warn('left');
+          }}
+          rightPressed={() => {
+            console.warn('right');
+          }}
+        />
 
         <View
           style={{
@@ -84,7 +57,6 @@ export class Dashboard extends React.Component {
           <TouchableOpacity
             onPress={() => {
               // this.props.navigation.navigate('BasicsTwo');
-              console.warn(this);
             }}
             style={{
               height: '90%',
