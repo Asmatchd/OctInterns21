@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {AppBtn, NavHeader} from '../../components';
 
 export class EditProfile extends React.Component {
   state = {
@@ -29,33 +30,18 @@ export class EditProfile extends React.Component {
             flex: 1,
             // backgroundColor: '#aaf',
           }}>
-          {/* spacer */}
-          <View
-            style={{
-              height: '15%',
-              //   backgroundColor: '#faf',
+          <NavHeader
+            leftIc={'ios-arrow-back'}
+            title={'Edit Profile'}
+            leftPressed={() => {
+              this.props.navigation.goBack();
             }}
           />
-          {/* top view */}
-          <View
-            style={{
-              //   backgroundColor: '#a4a',
-              paddingLeft: 15,
-            }}>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                color: '#000',
-              }}>
-              Edit Profile
-            </Text>
-          </View>
 
           {/* spacer */}
           <View
             style={{
-              height: '10%',
+              height: '5%',
               //   backgroundColor: '#faf',
             }}
           />
@@ -103,33 +89,13 @@ export class EditProfile extends React.Component {
               value={this.state.password}
             />
 
-            <View
-              style={{
-                // backgroundColor: '#faf',
-                marginTop: 40,
-                width: '100%',
-                alignItems: 'center',
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.replace('Dashboard')}
-                style={{
-                  backgroundColor: '#000',
-                  height: 50,
-                  width: '70%',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 7,
-                }}
-                // disabled
-              >
-                <Text
-                  style={{
-                    color: '#fff',
-                  }}>
-                  Update
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <AppBtn
+              txt={'Update'}
+              onPress={() => this.props.navigation.replace('Dashboard')}
+              st={{
+                marginTop: 20,
+              }}
+            />
           </View>
         </View>
       </KeyboardAwareScrollView>
