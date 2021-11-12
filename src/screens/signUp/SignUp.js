@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {AppBtn, AppInput} from '../../components';
+import {AppBtn, AppInput, NavHeader} from '../../components';
 
 export class SignUp extends React.Component {
   state = {
@@ -69,44 +69,39 @@ export class SignUp extends React.Component {
             flex: 1,
             // backgroundColor: '#aaf',
           }}>
-          {/* spacer */}
+          <NavHeader title={'Sign Up'} />
+
           <View
             style={{
-              height: '15%',
-              //   backgroundColor: '#faf',
-            }}
-          />
-          {/* top view */}
-          <View
-            style={{
-              //   backgroundColor: '#a4a',
-              paddingLeft: 15,
+              height: '20%',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}>
-            <Text
+            <View
               style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                color: '#000',
+                // backgroundColor: '#aaf',
+                height: 120,
+                width: 120,
+                borderWidth: 0.5,
+                borderRadius: 60,
+                overflow: 'hidden',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderColor: 'red',
               }}>
-              Welcome
-            </Text>
-
-            <Text
-              style={{
-                fontSize: 18,
-                color: '#000',
-              }}>
-              glad to see you!
-            </Text>
+              <Image
+                source={require('../../assets/user.png')}
+                // source={{
+                //   uri: 'https://www.iconspng.com/images/young-user-icon.jpg',
+                // }}
+                style={{
+                  resizeMode: 'contain',
+                  height: '80%',
+                  width: '80%',
+                }}
+              />
+            </View>
           </View>
-
-          {/* spacer */}
-          <View
-            style={{
-              height: '10%',
-              //   backgroundColor: '#faf',
-            }}
-          />
 
           {/* bottom view */}
           <View
