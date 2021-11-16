@@ -60,17 +60,17 @@ export class SignUp extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        contentContainerStyle={{
-          flexGrow: 2,
+      <View
+        style={{
+          flex: 1,
+          // backgroundColor: '#aaf',
         }}>
-        <View
-          style={{
-            flex: 1,
-            // backgroundColor: '#aaf',
-          }}>
-          <NavHeader title={'Sign Up'} />
+        <NavHeader title={'Sign Up'} />
 
+        <KeyboardAwareScrollView
+          contentContainerStyle={{
+            flexGrow: 2,
+          }}>
           <View
             style={{
               height: '20%',
@@ -240,8 +240,8 @@ export class SignUp extends React.Component {
               </Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </KeyboardAwareScrollView>
+        </KeyboardAwareScrollView>
+      </View>
     );
   }
 }
