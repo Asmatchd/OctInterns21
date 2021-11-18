@@ -14,6 +14,7 @@ export class List extends React.Component {
         fName: 'Umer',
         phone: '123456789',
         age: '27',
+        dob: '10-10-2000',
         img: require('../../assets/1.jpg'),
       },
       {
@@ -87,8 +88,12 @@ export class List extends React.Component {
     }
   }; */
 
-  renderDesign = item => (
-    <View
+  renderDesign = (item, index) => (
+    <TouchableOpacity
+      onPress={() => {
+        this.props.navigation.navigate('DetailsScreen', item);
+      }}
+      // onPress={() => console.warn(index)}
       style={{
         height: h('11%'),
         // backgroundColor: '#aaf',
@@ -161,7 +166,7 @@ export class List extends React.Component {
           <Text>Phone: {item.phone}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   separator = () => (
@@ -190,7 +195,7 @@ export class List extends React.Component {
             margin: h('1'),
           }}
           data={this.state.data}
-          renderItem={({item}) => this.renderDesign(item)}
+          renderItem={({item, index}) => this.renderDesign(item, index)}
           ItemSeparatorComponent={() => this.separator()}
           keyExtractor={(index, item) => item.toString()}
         />
