@@ -6,7 +6,7 @@ import {Basics} from '../screens/basics';
 import {BasicsTwo} from '../screens/basicsTwo';
 import {Dashboard} from '../screens/dashboard';
 import {EditProfile} from '../screens/editProfile/EditProfile';
-import {ColumnList, DetailsScreen, List} from '../screens/list';
+import {ColumnList, DetailsScreen, List, MultiList} from '../screens/list';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,15 +15,28 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="ColumnList"
-          component={ColumnList}
+          name="Dashboard"
+          component={Dashboard}
           options={{headerShown: false}}
         />
+
         <Stack.Screen
           name="List"
           component={List}
           options={{headerShown: false}}
         />
+
+        <Stack.Screen
+          name="MultiList"
+          component={MultiList}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ColumnList"
+          component={ColumnList}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen
           name="DetailsScreen"
           component={DetailsScreen}
@@ -41,11 +54,6 @@ export const ScreenNavigator = () => {
           options={{headerShown: false}}
         />
 
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={{headerShown: false}}
-        />
         <Stack.Screen
           name="Basics"
           component={Basics}

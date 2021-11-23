@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
-import {NavHeader} from '../../components';
+import {AppInput, NavHeader} from '../../components';
 import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
@@ -10,7 +10,39 @@ export class List extends React.Component {
   state = {
     data: [
       {
-        name: 'Ali',
+        name: 'Haseeb',
+        fName: 'Umer',
+        phone: '123456789',
+        age: '27',
+        dob: '10-10-2000',
+        img: require('../../assets/1.jpg'),
+      },
+      {
+        name: 'Imran',
+        fName: 'Kashif',
+        phone: '123450987',
+        age: '37',
+        img: require('../../assets/2.jpg'),
+      },
+
+      {
+        name: 'kashif',
+        fName: 'Umer',
+        phone: '5678432',
+        age: '20',
+        img: require('../../assets/3.jpg'),
+      },
+      {
+        name: 'ali',
+        fName: 'Kashif',
+        phone: '9876543',
+        age: '16',
+        img: require('../../assets/4.jpg'),
+      },
+    ],
+    filteredData: [
+      {
+        name: 'Haseeb',
         fName: 'Umer',
         phone: '123456789',
         age: '27',
@@ -177,6 +209,17 @@ export class List extends React.Component {
     />
   );
 
+  searchFilterFunction = txt => {
+    const newData = this.state.data.filter(item => {
+      const itemData = `${item.name.toUpperCase()} ${item.fName.toUpperCase()} ${
+        item.phone
+      }`;
+      const searchTxt = txt.toUpperCase();
+      return itemData.indexOf(searchTxt) > -1;
+    });
+    this.setState({filteredData: newData});
+  };
+
   render() {
     return (
       <View
@@ -185,16 +228,31 @@ export class List extends React.Component {
         }}>
         <NavHeader
           title={'List'}
-          rightIc={'ios-arrow-forward'}
-          rightPressed={() => {
-            this.setState({loggedIn: !this.state.loggedIn});
+          // rightIc={'ios-arrow-forward'}
+          // rightPressed={() => {
+          //   this.setState({loggedIn: !this.state.loggedIn});
+          // }}
+          leftIc={'ios-arrow-back'}
+          leftPressed={() => {
+            this.props.navigation.goBack();
           }}
         />
+
+        <AppInput
+          ic={'search'}
+          placeholder={'Search Here'}
+          st={{
+            marginTop: h('1%'),
+          }}
+          onChangeText={txt => this.searchFilterFunction(txt)}
+        />
+
         <FlatList
+          // inverted
           style={{
             margin: h('1'),
           }}
-          data={this.state.data}
+          data={this.state.filteredData}
           renderItem={({item, index}) => this.renderDesign(item, index)}
           ItemSeparatorComponent={() => this.separator()}
           keyExtractor={(index, item) => item.toString()}

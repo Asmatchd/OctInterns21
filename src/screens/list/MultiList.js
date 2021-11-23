@@ -199,7 +199,13 @@ export class MultiList extends React.Component {
         style={{
           flex: 1,
         }}>
-        <NavHeader title={'Multi List'} />
+        <NavHeader
+          title={'Multi List'}
+          leftIc={'ios-arrow-back'}
+          leftPressed={() => {
+            this.props.navigation.goBack();
+          }}
+        />
 
         <View
           style={{

@@ -310,7 +310,13 @@ export class ColumnList extends React.Component {
         style={{
           flex: 1,
         }}>
-        <NavHeader title={'Column List'} />
+        <NavHeader
+          title={'Column List'}
+          leftIc={'ios-arrow-back'}
+          leftPressed={() => {
+            this.props.navigation.goBack();
+          }}
+        />
         <View
           style={{
             height: h('10%'),

@@ -63,7 +63,7 @@ export class Dashboard extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() => {
-                // this.props.navigation.navigate('BasicsTwo');
+                this.props.navigation.navigate('List');
               }}
               style={{
                 height: '90%',
@@ -79,6 +79,63 @@ export class Dashboard extends React.Component {
                   color: '#fff',
                 }}>
                 List
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{
+              height: '15%',
+              // backgroundColor: '#a4a',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('MultiList');
+              }}
+              style={{
+                height: '90%',
+                width: '90%',
+                borderColor: 'red',
+                borderWidth: 1,
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  color: '#fff',
+                }}>
+                Multi List
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              height: '15%',
+              // backgroundColor: '#a4a',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('ColumnList');
+              }}
+              style={{
+                height: '90%',
+                width: '90%',
+                borderColor: 'red',
+                borderWidth: 1,
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  color: '#fff',
+                }}>
+                Column List
               </Text>
             </TouchableOpacity>
           </View>
