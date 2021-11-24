@@ -1,10 +1,18 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  Alert,
+} from 'react-native';
 import {AppInput, NavHeader} from '../../components';
 import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export class List extends React.Component {
   state = {
@@ -157,7 +165,7 @@ export class List extends React.Component {
       <View
         style={{
           height: '100%',
-          width: '80%',
+          width: '70%',
           // backgroundColor: '#a3a',
         }}>
         <View
@@ -198,16 +206,39 @@ export class List extends React.Component {
           <Text>Phone: {item.phone}</Text>
         </View>
       </View>
+
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert('Alert....', 'Do you really want to delete this item?', [
+            {
+              text: 'Ask Me Later',
+            },
+            {
+              text: 'No',
+            },
+            {text: 'Yes', onPress: () => this.remove(item)},
+          ]);
+        }}
+        style={{
+          height: '100%',
+          width: '10%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Ionicons name={'trash'} size={h('3.5%')} color={'red'} />
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 
-  separator = () => (
-    <View
-      style={{
-        height: h('1%'),
-      }}
-    />
-  );
+  remove = item => {
+    let arr = [...this.state.filteredData];
+
+    var ind = arr.findIndex(element => element.name === item.name);
+    if (ind > -1) {
+      arr.splice(ind, 1);
+      this.setState({filteredData: arr});
+    }
+  };
 
   searchFilterFunction = txt => {
     const newData = this.state.data.filter(item => {
@@ -219,6 +250,14 @@ export class List extends React.Component {
     });
     this.setState({filteredData: newData});
   };
+
+  separator = () => (
+    <View
+      style={{
+        height: h('1%'),
+      }}
+    />
+  );
 
   render() {
     return (
