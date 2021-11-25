@@ -233,11 +233,54 @@ export class List extends React.Component {
   remove = item => {
     let arr = [...this.state.filteredData];
 
-    var ind = arr.findIndex(element => element.name === item.name);
+    let ind = arr.findIndex(element => element.name === item.name);
     if (ind > -1) {
       arr.splice(ind, 1);
       this.setState({filteredData: arr});
     }
+  };
+
+  add = () => {
+    // this is used to concat two arrays
+
+    // let arr = [...this.state.filteredData];
+    // const newItem = [
+    //   {
+    //     name: 'Test User',
+    //     fName: 'User',
+    //     phone: '00000000',
+    //     age: '56',
+    //     dob: '10-10-1987',
+    //     img: require('../../assets/1.jpg'),
+    //   },
+    //   {
+    //     name: 'Test User 2',
+    //     fName: 'User 2',
+    //     phone: '1111111111',
+    //     age: '50',
+    //     dob: '10-10-1950',
+    //     img: require('../../assets/2.jpg'),
+    //   },
+    // ];
+
+    // this.setState({filteredData: arr.concat(newItem)});
+
+    const newItem = {
+      name: 'Test User',
+      fName: 'User',
+      phone: '00000000',
+      age: '56',
+      dob: '10-10-1987',
+      img: require('../../assets/1.jpg'),
+    };
+    this.setState(
+      prevState => ({
+        filteredData: [...prevState.filteredData, newItem],
+      }),
+      () => {
+        console.warn('done');
+      },
+    );
   };
 
   searchFilterFunction = txt => {
@@ -274,6 +317,10 @@ export class List extends React.Component {
           leftIc={'ios-arrow-back'}
           leftPressed={() => {
             this.props.navigation.goBack();
+          }}
+          rightIc={'person'}
+          rightPressed={() => {
+            this.add();
           }}
         />
 
