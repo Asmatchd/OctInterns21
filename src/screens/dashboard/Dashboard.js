@@ -29,6 +29,8 @@ export class Dashboard extends React.Component {
   };
 
   render() {
+    const navigation = this.props.navigation;
+
     return (
       <ImageBackground
         source={require('../../assets/bg.jpg')}
@@ -46,7 +48,7 @@ export class Dashboard extends React.Component {
             title={'Dashboard'}
             rightIc={'ios-arrow-forward'}
             leftPressed={() => {
-              console.warn('left');
+              navigation.openDrawer();
             }}
             rightPressed={() => {
               console.warn('right');
@@ -92,7 +94,7 @@ export class Dashboard extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('MultiList');
+                navigation.navigate('MultiList');
               }}
               style={{
                 height: '90%',
