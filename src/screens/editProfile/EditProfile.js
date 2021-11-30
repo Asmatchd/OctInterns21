@@ -91,7 +91,7 @@ export class EditProfile extends React.Component {
 
             <AppBtn
               txt={'Update'}
-              onPress={() => this.props.navigation.replace('DrawerNavigator')}
+              onPress={() => this.props.navigation.replace('TabNavigator')}
               st={{
                 marginTop: 20,
               }}

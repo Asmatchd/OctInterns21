@@ -4,11 +4,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SignUp} from '../screens/signUp';
 import {Basics} from '../screens/basics';
 import {BasicsTwo} from '../screens/basicsTwo';
-import {Dashboard} from '../screens/dashboard';
 import {EditProfile} from '../screens/editProfile/EditProfile';
 import {ColumnList, DetailsScreen, List, MultiList} from '../screens/list';
 import {Settings} from '../screens/settings';
-import {DrawerNavigator} from './DrawerNavigator';
+import {TabNavigator} from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,10 +16,11 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="DrawerNavigator"
-          component={DrawerNavigator}
+          name="TabNavigator"
+          component={TabNavigator}
           options={{headerShown: false}}
         />
+
         <Stack.Screen
           name="Settings"
           component={Settings}
@@ -32,12 +32,12 @@ export const ScreenNavigator = () => {
           component={List}
           options={{headerShown: false}}
         />
-
         <Stack.Screen
           name="MultiList"
           component={MultiList}
           options={{headerShown: false}}
         />
+
         <Stack.Screen
           name="ColumnList"
           component={ColumnList}

@@ -44,12 +44,12 @@ export class Dashboard extends React.Component {
             backgroundColor: '#0007',
           }}>
           <NavHeader
-            leftIc={'ios-list'}
             title={'Dashboard'}
-            rightIc={'ios-arrow-forward'}
+            leftIc={'ios-list'}
             leftPressed={() => {
               navigation.openDrawer();
             }}
+            rightIc={'ios-arrow-forward'}
             rightPressed={() => {
               console.warn('right');
             }}
