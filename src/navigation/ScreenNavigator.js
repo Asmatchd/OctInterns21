@@ -8,6 +8,7 @@ import {EditProfile} from '../screens/editProfile/EditProfile';
 import {ColumnList, DetailsScreen, List, MultiList} from '../screens/list';
 import {Settings} from '../screens/settings';
 import {TabNavigator} from './TabNavigator';
+import {Splash} from '../screens/splash';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,11 @@ export const ScreenNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}

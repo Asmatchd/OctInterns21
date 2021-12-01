@@ -203,7 +203,7 @@ export class MultiList extends React.Component {
           title={'Multi List'}
           leftIc={'ios-list'}
           leftPressed={() => {
-            this.props.navigation.openDrawer();
+            console.warn('Left');
           }}
         />
 
