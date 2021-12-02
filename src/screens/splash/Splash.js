@@ -11,6 +11,8 @@ export class Splash extends React.Component {
     setTimeout(() => {
       AsyncStorage.getItem('userData', (err, res) => {
         if (!err && res !== null) {
+          // const data = JSON.parse(res);
+          // console.warn(data);
           this.props.navigation.replace('TabNavigator');
         } else {
           this.props.navigation.replace('SignUp');
