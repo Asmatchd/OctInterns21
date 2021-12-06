@@ -15,18 +15,17 @@ export class Dashboard extends React.Component {
   };
 
   componentDidMount = () => {
-    const navProps = this.props.route.params;
-    if (navProps !== undefined) {
-      this.setState({
-        user: navProps,
-        name: navProps.name,
-        email: navProps.email,
-        password: navProps.password,
-      });
-      // console.warn('GIft ha');
-    } else {
-      // console.warn('NO roti pani');
-    }
+    AsyncStorage.getItem('userData', (err, res) => {
+      if (!err && res !== null) {
+        const data = JSON.parse(res);
+        this.setState({
+          user: data,
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        });
+      }
+    });
   };
 
   render() {

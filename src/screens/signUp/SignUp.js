@@ -92,7 +92,7 @@ export class SignUp extends React.Component {
         const data = JSON.parse(res);
         if (data.email === this.state.inEmail) {
           if (data.password === this.state.inPassword) {
-            this.props.navigation.navigate('TabNavigator');
+            this.props.navigation.replace('TabNavigator');
           } else {
             alert('Incorrect password');
           }
