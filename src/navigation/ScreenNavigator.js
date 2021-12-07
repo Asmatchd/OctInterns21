@@ -9,6 +9,7 @@ import {ColumnList, DetailsScreen, List, MultiList} from '../screens/list';
 import {Settings} from '../screens/settings';
 import {TabNavigator} from './TabNavigator';
 import {Splash} from '../screens/splash';
+import {ImgPick} from '../screens/imgPick/ImgPick';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,11 @@ export const ScreenNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="ImgPick"
+          component={ImgPick}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}
