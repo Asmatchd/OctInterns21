@@ -12,13 +12,31 @@ import {
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-
+import moment from 'moment';
 import {AppBtn, NavHeader} from '../../components';
 
 export class ImgPick extends React.Component {
   state = {
     galleryImg: '',
     cameraImg: '',
+    dt: '06-2015-07',
+    time: '',
+  };
+
+  componentDidMount = () => {
+    this.setDate();
+  };
+
+  setDate = () => {
+    this.setState({time: moment().format('hh:mm:ss a')}, () => {
+      this.repeat();
+    });
+  };
+
+  repeat = () => {
+    setTimeout(() => {
+      this.setDate();
+    }, 1000);
   };
 
   fromGallery = () => {
@@ -131,6 +149,17 @@ export class ImgPick extends React.Component {
             />
           )}
         </TouchableOpacity>
+        <View>
+          <Text
+            style={{
+              fontSize: h('3%'),
+              fontWeight: 'bold',
+            }}>
+            {/* {moment(this.state.dt, 'DD-Y-MM').format('DD-MMM-YY')} {'   '} */}
+            {moment().format('DD-MMM-YY')} {'   '}
+            {this.state.time}
+          </Text>
+        </View>
 
         <TouchableOpacity
           onPress={() => {

@@ -96,7 +96,7 @@ export class Dashboard extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('MultiList');
+                navigation.navigate('ImgPick');
               }}
               style={{
                 height: '90%',
@@ -111,7 +111,7 @@ export class Dashboard extends React.Component {
                 style={{
                   color: '#fff',
                 }}>
-                Multi List
+                Image Picker
               </Text>
             </TouchableOpacity>
           </View>

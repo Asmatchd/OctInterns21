@@ -18,11 +18,6 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="ImgPick"
-          component={ImgPick}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}
           options={{headerShown: false}}
@@ -43,6 +38,12 @@ export const ScreenNavigator = () => {
         <Stack.Screen
           name="Settings"
           component={Settings}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="ImgPick"
+          component={ImgPick}
           options={{headerShown: false}}
         />
 
