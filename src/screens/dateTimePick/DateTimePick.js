@@ -32,7 +32,13 @@ export class DateTimePick extends React.Component {
         style={{
           flex: 1,
         }}>
-        <NavHeader title={'Date Time Picker'} />
+        <NavHeader
+          title={'Date Time Picker'}
+          leftIc={'ios-arrow-back'}
+          leftPressed={() => {
+            this.props.navigation.goBack();
+          }}
+        />
 
         <View
           style={{
