@@ -9,7 +9,8 @@ import {ColumnList, DetailsScreen, List, MultiList} from '../screens/list';
 import {Settings} from '../screens/settings';
 import {TabNavigator} from './TabNavigator';
 import {Splash} from '../screens/splash';
-import {ImgPick} from '../screens/imgPick/ImgPick';
+import {ImgPick} from '../screens/imgPick';
+import {DateTimePick} from '../screens/dateTimePick';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,12 @@ export const ScreenNavigator = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="DateTimePick"
+          component={DateTimePick}
           options={{headerShown: false}}
         />
 
