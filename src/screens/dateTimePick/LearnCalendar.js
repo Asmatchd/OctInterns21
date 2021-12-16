@@ -8,12 +8,14 @@ import {
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Calendar} from 'react-native-calendars';
+import {Avatar, ButtonGroup} from 'react-native-elements';
 
 export class LearnCalendar extends React.Component {
   state = {
     date: '',
     allDates: ['2021-12-14', '2021-12-15', '2021-12-24'],
     markedDates: {},
+    selectedIndex: 0,
   };
 
   componentDidMount = () => {
@@ -35,6 +37,39 @@ export class LearnCalendar extends React.Component {
     };
 
     this.setState({markedDates: markedDate});
+  };
+
+  buttons = ['Waiting Room', 'Emergency', 'ICU', 'Study'];
+
+  selectButton = selected => {
+    switch (selected) {
+      case 0:
+        this.setState({
+          selectedIndex: selected,
+        });
+        break;
+
+      case 1:
+        this.setState({
+          selectedIndex: selected,
+        });
+        break;
+
+      case 2:
+        this.setState({
+          selectedIndex: selected,
+        });
+        break;
+
+      case 3:
+        this.setState({
+          selectedIndex: selected,
+        });
+        break;
+
+      default:
+        break;
+    }
   };
 
   render() {
@@ -85,6 +120,45 @@ export class LearnCalendar extends React.Component {
             textDayHeaderFontSize: h('2'),
           }}
         />
+
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: '#faf',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Avatar
+            rounded
+            title="MD"
+            overlayContainerStyle={{backgroundColor: 'blue'}}
+            size="small"
+          />
+
+          <Avatar
+            icon={{name: 'home'}}
+            overlayContainerStyle={{backgroundColor: 'blue'}}
+            size="medium"
+          />
+
+          <Avatar
+            size="large"
+            rounded
+            icon={{name: 'user', type: 'font-awesome'}}
+            overlayContainerStyle={{backgroundColor: 'blue'}}
+          />
+
+          <ButtonGroup
+            // onPress={selected => this.selectButton(selected)}
+            onPress={this.selectButton}
+            selectedIndex={this.state.selectedIndex}
+            buttons={this.buttons}
+            selectedButtonStyle={{backgroundColor: 'red'}}
+            selectedTextStyle={{
+              color: 'white',
+            }}
+          />
+        </View>
       </View>
     );
   }

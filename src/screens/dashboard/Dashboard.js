@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {NavHeader} from '../../components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DeviceInfo from 'react-native-device-info';
 
 export class Dashboard extends React.Component {
   state = {
@@ -15,6 +16,7 @@ export class Dashboard extends React.Component {
   };
 
   componentDidMount = () => {
+    this.deviceData();
     AsyncStorage.getItem('userData', (err, res) => {
       if (!err && res !== null) {
         const data = JSON.parse(res);
@@ -26,6 +28,14 @@ export class Dashboard extends React.Component {
         });
       }
     });
+  };
+
+  deviceData = () => {
+    // let res = DeviceInfo.getBundleId();
+    // let res = DeviceInfo.getBuildNumber();
+    // let res = DeviceInfo.getDeviceId();
+    let res = DeviceInfo.getVersion();
+    console.warn(res);
   };
 
   render() {
@@ -202,6 +212,34 @@ export class Dashboard extends React.Component {
                   color: '#fff',
                 }}>
                 Date Time Picker
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              height: '15%',
+              // backgroundColor: '#a4a',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('LearnCalendar');
+              }}
+              style={{
+                height: '90%',
+                width: '90%',
+                borderColor: 'red',
+                borderWidth: 1,
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  color: '#fff',
+                }}>
+                Calendar
               </Text>
             </TouchableOpacity>
           </View>

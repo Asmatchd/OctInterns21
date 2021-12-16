@@ -19,13 +19,14 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="LearnCalendar"
-          component={LearnCalendar}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="LearnCalendar"
+          component={LearnCalendar}
           options={{headerShown: false}}
         />
 
