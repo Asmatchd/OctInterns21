@@ -130,8 +130,8 @@ export class LearnCalendar extends React.Component {
           }}>
           <Avatar
             rounded
-            title="MD"
-            overlayContainerStyle={{backgroundColor: 'blue'}}
+            title="ST"
+            overlayContainerStyle={{backgroundColor: 'green'}}
             size="small"
           />
 
