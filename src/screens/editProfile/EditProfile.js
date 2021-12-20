@@ -3,6 +3,8 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AppBtn, NavHeader} from '../../components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ActionButton from 'react-native-action-button';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export class EditProfile extends React.Component {
   state = {
@@ -109,6 +111,18 @@ export class EditProfile extends React.Component {
               }}
             />
           </View>
+
+          <ActionButton
+            buttonColor="black"
+            onPress={() => {
+              this.props.navigation.replace('TabNavigator');
+            }}
+            renderIcon={() => (
+              <Ionicons name="ios-home" style={{fontSize: 20, color: '#fff'}} />
+            )}
+            useNativeFeedback
+            position={'center'}
+          />
         </View>
       </KeyboardAwareScrollView>
     );

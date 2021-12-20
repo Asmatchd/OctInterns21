@@ -1,8 +1,5 @@
 import React from 'react';
 import {View, Text, ImageBackground, TouchableOpacity} from 'react-native';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {NavHeader} from '../../components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DeviceInfo from 'react-native-device-info';
@@ -16,7 +13,7 @@ export class Dashboard extends React.Component {
   };
 
   componentDidMount = () => {
-    this.deviceData();
+    // this.deviceData();
     AsyncStorage.getItem('userData', (err, res) => {
       if (!err && res !== null) {
         const data = JSON.parse(res);
