@@ -29,7 +29,7 @@ export class SignUp extends React.Component {
     secureTxt: true,
 
     modalVisible: false,
-    inEmail: '',
+    inPhone: '',
     inPassword: '',
   };
 
@@ -76,6 +76,19 @@ export class SignUp extends React.Component {
       : this.state.phone.length < 11
       ? alert('Invalid Phone number')
       : this.signUp();
+
+    // AsyncStorage.setItem('userData', JSON.stringify(data), () => {
+    //   Alert.alert(
+    //     'Alert....',
+    //     'Your account have been created successfully please Sign in',
+    //     [
+    //       {
+    //         text: 'No',
+    //       },
+    //       {text: 'Yes', onPress: () => this.setState({modalVisible: true})},
+    //     ],
+    //   );
+    // });
   };
 
   signUp = () => {
@@ -89,32 +102,50 @@ export class SignUp extends React.Component {
     axiosInstance
       .post(baseUrl + 'users/signUp', data)
       .then(res => {
-        if (res.data.status === '200') {
-          alert(res.data.msg);
+        const data = res.data;
+        if (data.status === '200') {
+          alert(data.msg);
         } else {
-          alert(res.data.msg);
+          alert(data.msg);
         }
       })
       .catch(err => {
-        console.warn('2' + err);
+        console.warn(err.message);
       });
   };
 
   signIn = () => {
-    AsyncStorage.getItem('userData', (err, res) => {
-      if (!err && res !== null) {
-        const data = JSON.parse(res);
-        if (data.email === this.state.inEmail) {
-          if (data.password === this.state.inPassword) {
-            this.props.navigation.replace('TabNavigator');
-          } else {
-            alert('Incorrect password');
-          }
-        } else {
-          alert('Invalid email');
-        }
+    if (this.state.inPhone.length < 11) {
+      alert('Invalid Phone number');
+    } else {
+      if (this.state.inPassword.length < 8) {
+        alert('Password must contain 8 characters');
+      } else {
+        const data = {
+          phone: this.state.inPhone,
+          password: this.state.inPassword,
+        };
+        axiosInstance
+          .post(baseUrl + 'users/signIn', data)
+          .then(res => {
+            const data = res.data;
+            if (data.status === '200') {
+              AsyncStorage.setItem(
+                'userData',
+                JSON.stringify(data.data),
+                () => {
+                  this.props.navigation.replace('TabNavigator');
+                },
+              );
+            } else {
+              alert(data.msg);
+            }
+          })
+          .catch(err => {
+            console.warn(err.message);
+          });
       }
-    });
+    }
   };
 
   render() {
@@ -351,13 +382,14 @@ export class SignUp extends React.Component {
                   flex: 1,
                 }}>
                 <AppInput
-                  ic={'ios-mail'}
-                  placeholder={'Email'}
-                  onChangeText={txt => this.setState({inEmail: txt})}
+                  ic={'ios-call'}
+                  placeholder={'Phone'}
+                  onChangeText={txt => this.setState({inPhone: txt})}
                   st={{
                     marginTop: 10,
                     marginBottom: 10,
                   }}
+                  maxLength={11}
                 />
 
                 <View
