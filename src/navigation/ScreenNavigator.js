@@ -5,7 +5,13 @@ import {SignUp} from '../screens/signUp';
 import {Basics} from '../screens/basics';
 import {BasicsTwo} from '../screens/basicsTwo';
 import {EditProfile} from '../screens/editProfile/EditProfile';
-import {ColumnList, DetailsScreen, List, MultiList} from '../screens/list';
+import {
+  ColumnList,
+  DataList,
+  DetailsScreen,
+  List,
+  MultiList,
+} from '../screens/list';
 import {Settings} from '../screens/settings';
 import {TabNavigator} from './TabNavigator';
 import {Splash} from '../screens/splash';
@@ -18,11 +24,11 @@ export const ScreenNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Splash"
           component={Splash}
           options={{headerShown: false}}
-        />
+        /> */}
 
         <Stack.Screen
           name="TabNavigator"
@@ -33,6 +39,12 @@ export const ScreenNavigator = () => {
         <Stack.Screen
           name="LearnCalendar"
           component={LearnCalendar}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="DataList"
+          component={DataList}
           options={{headerShown: false}}
         />
 

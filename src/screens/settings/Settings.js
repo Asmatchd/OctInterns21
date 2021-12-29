@@ -46,6 +46,23 @@ export class Settings extends React.Component {
             Contact US
           </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('DataList')}
+          style={{
+            height: h('8%'),
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderBottomWidth: h('0.05'),
+          }}>
+          <Text
+            style={{
+              fontSize: h('2.5%'),
+            }}>
+            Data List
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

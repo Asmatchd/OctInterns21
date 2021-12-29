@@ -7,10 +7,11 @@ import {
   Image,
   Modal,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {AppBtn, AppInput, NavHeader} from '../../components';
+import {AppBtn, AppInput, NavHeader, Loading} from '../../components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   widthPercentageToDP as w,
@@ -31,6 +32,7 @@ export class SignUp extends React.Component {
     modalVisible: false,
     inPhone: '',
     inPassword: '',
+    visible: false,
   };
 
   sendData = (param, param2) => {
@@ -40,6 +42,11 @@ export class SignUp extends React.Component {
   };
 
   createUser = () => {
+    // this.showLoading(true);
+    // setTimeout(() => {
+    //   this.showLoading(false);
+    // }, 3000);
+
     // if (
     //   this.state.name === '' ||
     //   this.state.email === '' ||
@@ -92,6 +99,7 @@ export class SignUp extends React.Component {
   };
 
   signUp = () => {
+    this.showLoading(true);
     const data = {
       name: this.state.name,
       email: this.state.email,
@@ -102,6 +110,7 @@ export class SignUp extends React.Component {
     axiosInstance
       .post(baseUrl + 'users/signUp', data)
       .then(res => {
+        this.showLoading(false);
         const data = res.data;
         if (data.status === '200') {
           alert(data.msg);
@@ -110,6 +119,7 @@ export class SignUp extends React.Component {
         }
       })
       .catch(err => {
+        this.showLoading(false);
         console.warn(err.message);
       });
   };
@@ -121,6 +131,7 @@ export class SignUp extends React.Component {
       if (this.state.inPassword.length < 8) {
         alert('Password must contain 8 characters');
       } else {
+        this.showLoading(true);
         const data = {
           phone: this.state.inPhone,
           password: this.state.inPassword,
@@ -128,6 +139,7 @@ export class SignUp extends React.Component {
         axiosInstance
           .post(baseUrl + 'users/signIn', data)
           .then(res => {
+            this.showLoading(false);
             const data = res.data;
             if (data.status === '200') {
               AsyncStorage.setItem(
@@ -142,10 +154,15 @@ export class SignUp extends React.Component {
             }
           })
           .catch(err => {
-            console.warn(err.message);
+            this.showLoading(false);
+            alert('Network Error');
           });
       }
     }
+  };
+
+  showLoading = value => {
+    this.setState({visible: value});
   };
 
   render() {
@@ -155,11 +172,14 @@ export class SignUp extends React.Component {
           flex: 1,
           // backgroundColor: '#aaf',
         }}>
+        <Loading visible={this.state.visible} />
+
         <NavHeader title={'Sign Up'} />
 
         <KeyboardAwareScrollView
           contentContainerStyle={{
             flexGrow: 2,
+            backgroundColor: 'white',
           }}>
           <View
             style={{
